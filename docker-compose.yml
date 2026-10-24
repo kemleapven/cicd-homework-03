@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: 154560315950.dkr.ecr.us-east-1.amazonaws.com/cicd-web-app:${APP_VERSION:-v1.0.0}
+    container_name: homework03-web
+    ports:
+      - "5000:5000"
+    environment:
+      - APP_VERSION=${APP_VERSION:-v1.0.0}
+      - APP_ENV=production
+    restart: always
