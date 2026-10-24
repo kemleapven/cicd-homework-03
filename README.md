@@ -95,3 +95,21 @@ If a regression is identified in `v1.2.0`, an operator rolls back to `v1.1.0`:
      cicd-homework_web
    ```
 3. Swarm spawns the `v1.1.0` container replica and verifies its health before terminating `v1.2.0`, resulting in **zero downtime**.
+
+
+---
+
+## 5. Verification & Submission Deliverables
+
+| # | Deliverable Title | Screenshot File | Description |
+|---|---|---|---|
+| 1 | **GitHub Releases & Tags** | [screenshots/01 - GitHub Releases and Tags.jpg](screenshots/01%20-%20GitHub%20Releases%20and%20Tags.jpg) | Releases 1.0.0, 1.1.0, 1.2.0 published with release notes |
+| 2 | **Amazon ECR Repository** | [screenshots/02 - Amazon ECR Repository.jpg](screenshots/02%20-%20Amazon%20ECR%20Repository.jpg) | Immutable images retained across all 3 versions |
+| 3 | **Jenkins Pipeline Execution** | [screenshots/03 - Jenkins Pipeline View.jpg](screenshots/03%20-%20Jenkins%20Pipeline%20View.jpg) | Stage view for Builds #3, #4, #5 (Releases) and #6 (Rollback) |
+| 4 | **Parameterized Rollback Action** | [screenshots/04 - Jenkins Rollback Action.jpg](screenshots/04%20-%20Jenkins%20Rollback%20Action.jpg) | Jenkins parameters ACTION=rollback & VERSION=v1.1.0 |
+| 5 | **Live Health Telemetry** | [screenshots/05 - Live Application Health v1.1.0.jpg](screenshots/05%20-%20Live%20Application%20Health%20v1.1.0.jpg) | JSON /health telemetry confirming active rollback to 1.1.0 |
+| 6 | **Live Web Application Dashboard** | [screenshots/06 - Live Web Dashboard v1.1.0.jpg](screenshots/06%20-%20Live%20Web%20Dashboard%20v1.1.0.jpg) | Production UI at http://52.90.56.1:5000 for Ven KemLeap |
+| 7 | **Docker Swarm Cluster Status** | [screenshots/07 - EC2 Swarm Nodes and Replicas.jpg](screenshots/07%20-%20EC2%20Swarm%20Nodes%20and%20Replicas.jpg) | Active cluster nodes and 3 tasks running 1.1.0 |
+| 8 | **Release Documentation** | [screenshots/08 - RELEASING md Documentation.jpg](screenshots/08%20-%20RELEASING%20md%20Documentation.jpg) | Complete release discipline documented in RELEASING.md |
+
+Official Word Report: [Homework_3_Report_Ven_KemLeap.docx](Homework_3_Report_Ven_KemLeap.docx)
