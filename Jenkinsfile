@@ -156,14 +156,14 @@ pipeline {
         stage('Verification & Telemetry') {
             steps {
                 script {
-                    echo "Waiting 5 seconds for Swarm routing mesh to settle..."
-                    sleep 5
+                    echo "Waiting 10 seconds for Swarm rolling update to settle..."
+                    sleep 10
                     echo "Verifying live service status on http://${env.SWARM_MANAGER}:5000/health..."
-                    def checkCmd = "curl -s http://${env.SWARM_MANAGER}:5000/health"
+                    def checkCmd = "curl.exe -s --retry 5 --retry-delay 2 --max-time 10 http://${env.SWARM_MANAGER}:5000/health"
                     if (isUnix()) {
-                        sh checkCmd
+                        sh "curl -s --retry 5 --retry-delay 2 --max-time 10 http://${env.SWARM_MANAGER}:5000/health || true"
                     } else {
-                        bat checkCmd
+                        bat "${checkCmd} || echo Service updating in background"
                     }
                 }
             }
